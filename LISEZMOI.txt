@@ -1,0 +1,26 @@
+LECTEUR DX7 (moteur Dexed) - version application installable (PWA)
+
+CONTENU
+  index.html            l'application (moteur Dexed en WebAssembly embarque, rien d'autre a telecharger)
+  manifest.webmanifest  description de l'app (nom, icones, ouverture des .syx)
+  sw.js                 service worker : fonctionnement hors-ligne
+  icon-*.png            icones
+
+POUR L'INSTALLER (il faut une adresse HTTPS, ou localhost)
+  Option A - Netlify Drop (le plus simple, 1 minute)
+    1. Va sur https://app.netlify.com/drop
+    2. Glisse le DOSSIER decompresse (celui qui contient index.html).
+    3. Ouvre l'adresse obtenue dans Chrome/Edge, puis clique sur "Installer" (bouton dans la page
+       ou icone d'installation dans la barre d'adresse). Sur Android : menu > "Installer l'application".
+  Option B - GitHub Pages / Cloudflare Pages : poste le contenu du dossier tel quel.
+  Option C - en local, sur ton ordinateur seulement :
+       cd dossier ; python3 -m http.server 8000   puis ouvre http://localhost:8000
+
+BON A SAVOIR
+  - Les exports sont de vrais fichiers : MaCarte.syx (nom = nom de la carte) et bibliotheque_dx7.json.
+  - Les donnees (notes, tags, journal, carte) restent dans CE navigateur, pour CETTE adresse. Exporte
+    regulierement "toutes les ecoutees" en JSON (sauvegarde). Pour migrer depuis la page claude.ai :
+    exporte le JSON la-bas, puis "Ouvrir" ici.
+  - MIDI : Chrome, Edge (ordinateur et Android). Safari/iPad : pas de Web MIDI.
+  - Pour publier une nouvelle version : change V dans sw.js ('dx7-v1' -> 'dx7-v2') avant de redeployer.
+  - Sur Chrome/Edge ordinateur, l'app installee peut etre choisie comme programme d'ouverture des .syx.
